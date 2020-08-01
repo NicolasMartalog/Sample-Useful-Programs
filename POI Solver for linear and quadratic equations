@@ -1,1 +1,384 @@
 
+#include <iostream>
+#include <cmath>
+#include <limits>
+
+using namespace std;
+
+int main()
+{
+    int num, amount, i;
+    float lin1a, lin1b, lin1c, lin2a, lin2b, lin2c, x, y, lin3a, lin3c, quada, quadb, quadc, b, c, d, answer0, answer1, answer2, answer3, answer4, answer5, a, b1, c1, d1;
+    float quad1a, quad1b, quad1c, quad2a, quad2b, quad2c, quad3a, quad3b, quad3c, quad4a, quad4b, quad4c, lin4a, lin4c, x4, c4;
+    char choice, couch, ch;
+    double a0, a1, a2, a3;
+    bool run = false;
+    bool bFail;
+
+    do
+    {
+        do
+        {
+            cout << "---The Math POI Solver Program---\n\n" << endl;
+            cout << "What do you want to solve for\n";
+            cout << "(1). Linear-Linear\n";
+            cout << "(2). Linear-Quadratic\n";
+            cout << "(3). Quadratic-Quadratic\n";
+            /*cout << "(4). Polynomial-linear\n";
+            cout << "(5). Polynomial-quadratic\n";
+            cout << "(6). Polynomial-Polynomial\n\n"; */
+            cin >> num;
+
+
+
+            if (num == 1)
+            {
+                do
+                {
+                    cout << "base formula ( y = ax + b )\n\n";
+                    cout << "what do you want the first linear equation 'a' to be\n";
+                    cin >> lin1a;
+                    bFail = cin.fail();
+                    cin.clear();
+                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                }
+                while (bFail == true);
+                do
+                {
+                    cout << "what do you want the first linear equation 'b' to be\n";
+                    cin >> lin1c;
+                    bFail = cin.fail();
+                    cin.clear();
+                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                }
+                while (bFail == true);
+                do
+                {
+                    cout << "what do you want the second linear equation 'a' to be\n";
+                    cin >> lin2a;
+                    bFail = cin.fail();
+                    cin.clear();
+                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                }
+                while (bFail == true);
+                do
+                {
+                    cout << "what do you want the second linear equation 'b' to be\n";
+                    cin >> lin2c;
+                    bFail = cin.fail();
+                    cin.clear();
+                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                }
+                while (bFail == true);
+                cout.precision(3);
+                cout << "the first equation is y = "<< lin1a << "X" << " + " << lin1c<<endl;
+                cout.precision(3);
+                cout << "the second equation is y = "<< lin2a << "X" << " + " << lin2c<<endl;
+
+
+                if (lin1a == lin2a || lin1b == lin2b)
+                {
+                    cout << "there are infinitly many solutions";
+                    for (int i=0; i<=10; i++)
+                    {
+                        cout << "\n" <<i;
+                    }
+                    cout << "\nyou get the idea\n";
+                }
+
+                else if (lin1a == lin1b)
+                {
+                    cout << "this is the wrong equation";
+                }
+
+                else if (lin1a != lin2a || lin1a != lin1b)
+                {
+                    x = (lin2c - lin1c)/(lin1a- lin2a);
+                    cout << "the value of X is" << x << endl;
+                    y = lin1a*(x) + lin1c;
+                    cout << "the value of Y is" << y << endl;
+                    cout << "do you want do the program again\n";
+                    cin >> couch;
+                }
+            }
+
+
+
+            if (num == 2 )
+            {
+                do
+                {
+                    cout << "linear ( y = ax + b ), Quadratic (y = ax^2 + bx + c)\n\n";
+                    cout << "what do you want the linear equation 'a' to be\n";
+                    cin >> lin3a;
+                    bFail = cin.fail();
+                    cin.clear();
+                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                }
+                while (bFail == true);
+                do
+                {
+                    cout << "what do you want the linear equation 'b' to be\n";
+                    cin >> lin3c;
+                    bFail = cin.fail();
+                    cin.clear();
+                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                }
+                while (bFail == true);
+                do
+                {
+                    cout << "what do you want the quadratic equation 'a' to be\n";
+                    cin >> quada;
+                    bFail = cin.fail();
+                    cin.clear();
+                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                }
+                while (bFail == true);
+                do
+                {
+                    cout << "what do you want the quadratic equation 'b' to be\n";
+                    cin >> quadb;
+                    bFail = cin.fail();
+                    cin.clear();
+                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                }
+                while (bFail == true);
+                do
+                {
+                    cout << "what do you want the quadratic equation 'c' to be\n";
+                    cin >> quadc;
+                    cout.precision(3);
+                    bFail = cin.fail();
+                    cin.clear();
+                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                }
+                while (bFail == true);
+                cout << "the first equation is y = "<< lin3a << "X" << " + " << lin3c<<endl;
+                cout.precision(3);
+                cout << "the second equation is y = "<< quada << "X^2" <<" + " << quadb<< "X" << " + " << quadc <<endl;
+
+                if (d > 0)
+                {
+                    b = quadb - lin3a;
+                    c = quadc - lin3c;
+                    d = b*b - 4*quada*c;
+
+                    answer1 = (-1)* b + sqrt(d);
+                    answer1 = answer1 / (2*quada);
+                    cout <<"One Answer is\n"<<endl;
+                    cout <<"X = " << answer1<<endl;
+                    cout <<"Y = " << lin3a*(answer1) + lin3c <<"\n";
+
+                    answer2 = (-1)* b - sqrt((d));
+                    answer2 = answer2 / (2*quada);
+                    cout <<"the Other answer is:\n"<<endl;
+                    cout <<"X = " << answer2<<endl;
+                    cout <<"Y = " << lin3a*(answer2) + lin3c<< endl;
+                }
+
+
+
+                if (d == 0)
+                {
+                    answer0 = (-1)* b + sqrt((d));
+                    answer0 = answer0 / (2*quada);
+                    cout.precision(3);
+                    cout << "X = "<< answer0;
+                    cout << "Y = "<< lin3a*(answer0) + lin3c<<endl;
+                }
+                else if (d < 0)
+                {
+                    cout << "Sorry no roots\n";
+                }
+            }
+
+            if (num == 3)
+            {
+                do
+                {
+                    cout << "Quadratic 1 (y = ax^2 + bx + c), Quadratic 2 (y = ax^2 + bx + c)\n\n";
+                    cout << "what do you want the first quadratic equation 'a' to be\n";
+                    cin >> quad3a;
+                    bFail = cin.fail();
+                    cin.clear();
+                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                }
+                while (bFail == true);
+                do
+                {
+                    cout << "what do you want the first quadratic equation 'b' to be\n";
+                    cin >> quad3b;
+                    bFail = cin.fail();
+                    cin.clear();
+                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                }
+                while (bFail == true);
+                do
+                {
+                    cout << "what do you want the first quadratic equation 'c' to be\n";
+                    cin >> quad3c;
+                    bFail = cin.fail();
+                    cin.clear();
+                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                }
+                while (bFail == true);
+                do
+                {
+                    cout << "what do you want the second quadratic equation 'a' to be\n";
+                    cin >> quad4a;
+                    bFail = cin.fail();
+                    cin.clear();
+                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                }
+                while (bFail == true);
+                do
+                {
+                    cout << "what do you want the second equation 'b' to be\n";
+                    cin >> quad4b;
+                    bFail = cin.fail();
+                    cin.clear();
+                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                }
+                while (bFail == true);
+                do
+                {
+                    cout << "what do you want the second equation 'c' to be\n";
+                    cin >> quad4c;
+                    bFail = cin.fail();
+                    cin.clear();
+                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                }
+                while (bFail == true);
+                cout << "the first equation is y = "<< quad3a << "X^2" <<" + " << quad3b<< "X" << " + " << quad3c <<endl;
+                cout << "the second equation is y = "<< quad4a << "X^2" <<" + " << quad4b<< "X" << " + " << quad4c <<endl;
+
+
+                if (d1 > 0)
+                {
+                    a  = quad4a - quad3a;
+                    b1 = quad4b - quad3b;
+                    c1 = quad4c - quad3c;
+                    d1 = b1*b1 - 4*a*c1;
+
+                    answer3 = (-1) * b1 + sqrt(d1);
+                    answer3 = answer3 / (2*a);
+                    cout <<"One Answer is:\n";
+                    cout.precision(3);
+                    cout <<"X = " << answer3<< "\n";
+                    cout.precision(3);
+                    cout <<"Y = " << (quad3a*(answer3)*(answer3)) + (quad3b * (answer3)) + quad3c<< "\n";
+
+                    answer4 = (-1)* b1 - sqrt(d1);
+                    answer4 = answer4 / (2*a);
+                    cout <<"the other answer is:\n";
+                    cout.precision(3);
+                    cout <<"X = " << answer4<< "\n";
+                    cout.precision(3);
+                    cout <<"Y = " << (quad3a*(answer4)*(answer4)) + (quad3b * (answer4)) + quad3c << "\n";
+                }
+
+                else if (d1 == 0)
+                {
+                    answer5 = (-1)* b1 + sqrt((d1));
+                    answer5 = answer5 / (2*a);
+                    cout.precision(3);
+                    cout << "X = "<< answer5;
+                    cout << "Y = "<< quad3a*(answer5)*(answer5) + (quad3b * (answer5)) + quad3c << "\n";
+                }
+
+                else if (d1 < 0)
+                {
+                    cout << "Sorry no roots\n";
+                }
+                else if (quad3a == quad4a || quad3b == quad4b || quad3c == quad4c)
+                {
+                    cout << "there are infinitly many answers\n";
+                    int j = 1;
+                    int coun = 0;
+
+                    while(i<10)
+                    {
+                        coun = coun + 1;
+                        j++;
+                    }
+                }
+
+                else if (num != 1 || num != 2 || num != 3 )
+                {
+                    cout << "try an actual number";
+                }
+
+                cout << "do you want to do the program again";
+                cin >> choice;
+            }
+
+            if (run == false )
+            {
+                cout <<  "Complete\n";
+            }
+
+        }
+        while (choice == 'y' || choice == 'Y');
+    }
+    while (couch == 'y' || couch == 'Y');
+
+    /* if (num == 4) {
+
+     cout << "linear  (y = ax + c), Polynomial (y = ax^3 + bx^2 + cx + d) **Power of x is 3** \n\n";
+     cout << "what do you want the quadratic equation 'a' to be\n";
+     cin >> lin4a;
+     cout << "what do you want the quadratic equation 'c' to be\n";
+     cin >> lin4c;
+     cout << "what do you want the trinomial equation 'a' to be\n";
+     cin >> a3;
+     cout << "what do you want the trinomial equation 'b' to be\n";
+     cin >> a2;
+     cout << "what do you want the trinomial equation 'c' to be\n";
+     cin >> a1;
+     cout << "what do you want the trinomial equation 'd' to be\n";
+     cin >> a0;
+
+
+     cout << "the quadratic equation is y = "<< lin4a << "X" << " + " << lin4c <<endl;
+     cout << "the trinomial equation is y = "<< a3 << "X^3" <<" + " << a2<< "X^2" << " + " << a1<<"X" << " + "<< a0 << endl;
+
+     x4 = a1 - lin4a;
+     c4 = a0 - lin4c;
+
+     double a0, a1, a2, a3;
+
+     int y{21);
+     int z{21);
+
+    for (int k=0; k<21; k++)
+    {
+     y[0]=1;
+     y[1]=1;
+     y[2]=1;
+
+    y[k+3]=-(((x4*y[k+2])+(a2*y[k+1])+(a3*y[k]))/c4);
+
+                                            }
+    double answer10=y[20]/y[19];
+    cout<< "The first solution is =  " << answer10<<endl;
+    double b0=c4;
+    double b1=x4+answer10*b0;
+    double b2=-(a3/answer10);
+    cout<<b0<<" " <<b1<<" "<<b2<<endl;
+    for(int j=0;j<21;j++)
+    {
+    z[0]=0;
+    z[1]=1;
+    z[j+2]=-((b1*z[j+1]+b2*z[j])/b0);
+                                    }
+    double answer11=(z[20]/z[19]);
+    cout<<" The second solution is =  " <<answer11<<endl;
+    double c0=b0;
+    double c1=-(b2/answer11);
+    double answer12=-(c1/c0);
+    cout<<c0<<" " <<c1<<endl;
+    cout<<" The third solution will be = "<< answer13<< "\n"<<endl;*/
+
+    return 0;
+}
+
